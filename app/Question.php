@@ -63,4 +63,11 @@ class Question extends Model
             ]
         );
     }
+
+    public static function deleteQuestionById($id)
+    {
+        $data = DB::table('questions')
+                ->where('id',$id)
+                ->delete();
+    }
 }

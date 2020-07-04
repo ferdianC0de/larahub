@@ -4,6 +4,7 @@
 @endsection
 @section('content')
 <div class="card">
+<a href="{{url('pertanyaan/')}}"><button class="btn btn-dark">Kembali</button></a>
       <div class="card-header">
         <h3 class="card-title">DataTable with default features</h3>
       </div>

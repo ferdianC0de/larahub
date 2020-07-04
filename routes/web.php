@@ -26,5 +26,5 @@ Route::put('/pertanyaan/{id}', 'QuestionController@update');
 Route::delete('/pertanyaan/{id}', 'QuestionController@delete');
 
 
-// Route::get('/jawaban/{pertanyaan_id}', 'AnswerController@index');
+// Route::get('/pertanyaan/{pertanyaan_id}', 'AnswerController@index');
 Route::post('/jawaban/{pertanyaan_id}', 'AnswerController@store');

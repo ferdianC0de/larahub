@@ -22,6 +22,6 @@ class AnswerController extends Controller
         $answer->content = $request->content;
         $answer->question_id = Question::find($quest_id)->id;
         $answer->createAnswer();
-        return redirect('jawaban/'.$quest_id);
+        return redirect('pertanyaan/'.$quest_id);
     }
 }

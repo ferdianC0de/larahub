@@ -33,9 +33,11 @@ class QuestionController extends Controller
         return view('questions-create')->with('question', $question);
     }
 
-    public function delete()
+    public function delete($id)
     {
-        return view('questions-create');
+        $question = Question::deleteQuestionById($id);
+        return redirect('pertanyaan');
+        // return "delete".$id;
     }
 
     public function store(Request $request)
