@@ -17,7 +17,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/data-tables', 'HomeController@dataTables');
 
 Route::get('/pertanyaan', 'QuestionController@index');
+Route::get('/pertanyaan/{id}', 'QuestionController@detail');
 Route::get('/pertanyaan/create', 'QuestionController@create');
+Route::get('/pertanyaan/{id}/edit', 'QuestionController@edit');
+
 Route::post('/pertanyaan/store', 'QuestionController@store');
-Route::get('/jawaban/{pertanyaan_id}', 'AnswerController@index');
+Route::put('/pertanyaan/{id}', 'QuestionController@update');
+Route::delete('/pertanyaan/{id}', 'QuestionController@delete');
+
+
+// Route::get('/jawaban/{pertanyaan_id}', 'AnswerController@index');
 Route::post('/jawaban/{pertanyaan_id}', 'AnswerController@store');

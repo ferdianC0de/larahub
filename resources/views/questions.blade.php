@@ -8,7 +8,7 @@
         <h3 class="card-title">DataTable with default features</h3>
       </div>
     <!-- /.box-footer -->
-  </form>
+    <a href="{{url('pertanyaan/create')}}"><button class="btn btn-primary">Buat Pertanyaan</button></a>
 
       <!-- /.card-header -->
       <div class="card-body">
@@ -33,7 +33,15 @@
                 <td>{{ $question->content }}</td>
                 <td>{{ $question->created_at }}</td>
                 <td>{{ $question->updated_at }}</td>
-                <td><a href="{{url('jawaban/'.$question->id)}}">Lihat Jawaban</a></td>
+                <td >
+                <!-- <a href="{{url('jawaban/'.$question->id)}}">Lihat Jawaban</a> -->
+                <a href="{{url('pertanyaan/'.$question->id)}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>LIHAT JAWABAN</button></a>
+                <a href="{{url('pertanyaan/'.$question->id.'/edit')}}"><button class="btn btn-success"><span class="glyphicon glyphicon-search"></span>EDIT</button></a>
+                <form action="{{url('pertanyaan/'.$question->id)}}" method="post" style="display:inline;">
+                @csrf
+                {{ method_field('DELETE') }}
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-search"></span> DELETE </button>
+                </form>
             </tr>
           <?php 
         };

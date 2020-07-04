@@ -4,15 +4,22 @@
 @endsection
 @section('content')
 <div class="box box-info">
+<a href="{{url('pertanyaan/')}}"><button class="btn btn-dark">Kembali</button></a>
   <div class="box-header with-border">
     <h3 class="box-title">Horizontal Form</h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
+  @if(isset($question))
+  <form class="form-horizontal" action="{{url('pertanyaan/'.$question[0]->id)}}" method=post>
+  {{ method_field('PUT') }}
+  @csrf
+  @else
   <form class="form-horizontal" action="{{url('pertanyaan/store')}}" method=post>
+  @csrf
+  @endif
     <div class="box-body">
       <div class="form-group">
-      @csrf
         <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
 
         <div class="col-sm-10">
@@ -31,7 +38,11 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
-      <button type="submit" class="btn btn-info pull-right">Create</button>
+    @if(isset($question))
+    <button type="submit" class="btn btn-info pull-right">Update</button>
+    @else
+    <button type="submit" class="btn btn-info pull-right">Create</button>
+    @endif
     </div>
     <!-- /.box-footer -->
   </form>
@@ -45,5 +56,17 @@
   $(function () {
     $("#example1").DataTable();
   });
+</script>
+<script>
+  <?php 
+if (isset($question)) {
+  foreach ($question as $q) {
+   ?>
+   document.getElementById('title').value = '{{$q->title}}';
+   document.getElementById('content').value = '{{$q->content}}';
+    <?php
+  }
+} 
+?>
 </script>
 @endpush

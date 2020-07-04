@@ -11,7 +11,7 @@ class AnswerController extends Controller
     //
     public function index($quest_id)
     {
-        $answers = Question::find($quest_id)->answers;
+        $answers = Question::getAnswers($quest_id);
         return view('answers')->with([ 'answers' => $answers, 'quest_id' => $quest_id]);
     }
 
@@ -21,8 +21,7 @@ class AnswerController extends Controller
         $answer->title = $request->title;
         $answer->content = $request->content;
         $answer->question_id = Question::find($quest_id)->id;
-        // return $answer;
-        $answer->save();
+        $answer->createAnswer();
         return redirect('jawaban/'.$quest_id);
     }
 }
